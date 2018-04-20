@@ -1,0 +1,68 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.big-padding {
+    padding:30px;
+}
+.no-margin {
+    margin:0px;
+}
+.no-padding {
+    padding:0px;
+}
+.no-transform {
+    text-transform: none;
+}
+.blue-grey {
+    background-color:#37474f;
+}
+.white {
+    background-color:white;
+}
+.white-text {
+    color:white;
+}
+.red-text {
+    color:rgb(200,50,50);
+}
+.inline-block {
+    display:inline-block;
+}
+.table {
+    background-color:white;
+}
+.absolute {
+    position:absolute;
+}
+.floating {
+    position:fixed;
+    bottom:2em;
+    right:2em;
+    z-index:100;
+}
+.product {
+    width:500px;
+    max-width:100%;
+    padding:1em;
+    position:relative;
+    h1 {
+        padding-bottom:10px;
+        border-bottom:solid 10x;
+    }
+    .actions {
+    right: 1em;
+    top:10px;
+    }
+}
+
