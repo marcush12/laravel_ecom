@@ -12,7 +12,9 @@
 */
 
 Route::get('/', 'MainController@home');
-Route::get('/carrinho', 'ShoppingCartsController@index');
+Route::get('/cart', 'ShoppingCartsController@index');
+Route::get('/cart', 'ShoppingCartsController@checkout');
+Route::get('/payments/store', 'PaymentsController@store');
 Route::get('/redirect', function () {
 
     $query = http_build_query([
@@ -47,3 +49,23 @@ Route::resource('products', 'ProductsController');
 Route::resource('in_shopping_carts', 'InShoppingCartsController', [
     'only' => ['store', 'destroy']
 ]);
+
+Route::resource('compras', 'ShoppingCartsController', [
+    'only' => ['show']
+]);
+Route::resource('orders', 'OrdersController', [
+    'only' => ['index', 'update']
+]);
+Route::get('products/images/{filename}', function ($filename) {
+    $path = storage_path('/app/images/'.$filename);
+
+    if (!\File::exists($path)) {
+        abort(404);
+    }
+
+    $file = \File::get($path);
+    $type = \File::mimeType($path);
+    $response = Response::make($file,200);
+    $response->header("Content-Type", $type);
+    return $response;
+});

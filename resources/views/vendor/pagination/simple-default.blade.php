@@ -4,7 +4,7 @@
         @if ($paginator->onFirstPage())
             <li class="disabled"><span>@lang('pagination.previous')</span></li>
         @else
-            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a></li>
+            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">anterior</a></li>
         @endif
 
         {{-- Next Page Link --}}

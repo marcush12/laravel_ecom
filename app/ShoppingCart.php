@@ -9,11 +9,9 @@ class ShoppingCart extends Model
     protected $table = 'shopping_carts';
     protected $fillable = ['status']; // mass asignable fields ()
 
-    // 2 methods types - add funcionality between others methods & methods that do something
-
     public static function findOrCreateBySessionID($shopping_cart_id){
     	if($shopping_cart_id){
-    		// find the actual SC with this 
+    		// find the actual SC with this
     		return ShoppingCart::findBySession($shopping_cart_id);
     	} else {
     		// create a SC
@@ -38,7 +36,7 @@ class ShoppingCart extends Model
     }
 
     public static function createWithoutSession(){
-    	
+
     	// old way
     	// $shopping_cart = new ShoppingCart;
     	// $shopping_cart->status = 'incompleted';
@@ -55,13 +53,13 @@ class ShoppingCart extends Model
     	return $this->products()->count();
     }
 
-    public function total(){
+    public function totalBRL(){
     	return $this->products()->sum('pricing'); 	// sum all the pricing values of the shopping cart
     }
 
-    public function totalUSD(){
-        return $this->products()->sum('pricing') / 100;
-    }
+    // public function totalUSD(){
+    //     return $this->products()->sum('pricing') / 100;
+    // }
 
     public function generateCustomID(){
         return md5("$this->id $this->updated_at");

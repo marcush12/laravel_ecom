@@ -30,7 +30,7 @@ class InShoppingCartsController extends Controller
             'product_id' => $request->product_id
          ]);
 
-          if($request->ajax()){
+         if($request->ajax()){
             return response()->json([
                 'products_count' => InShoppingCart::productsCount($sc->id)
             ]);

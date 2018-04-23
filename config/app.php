@@ -212,7 +212,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Paypalpayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
+        'PaypalPayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
 
     ],
 

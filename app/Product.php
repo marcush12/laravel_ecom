@@ -12,12 +12,12 @@ class Product extends Model
     public function paypalItem(){
     	return \PaypalPayment::item()->setName($this->title)
     	->setDescription($this->description)
-    	->setCurrency('USD')
+    	->setCurrency('BRL')
     	->setQuantity(1)
-    	->setPrice($this->pricing / 100);
+    	->setPrice($this->pricing);
     }
 
     public function scopeLatest($query){
-    	return $query->orderBy('id','desc'); 
+    	return $query->orderBy('id','desc');
     }
 }

@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\ShoppingCart;
-use App\Http\Requests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use App\Http\Requests;
+use App\ShoppingCart;
+use App\Product;
 
 class MainController extends Controller
 {
-    public function home()
-    {
-
-        return view('main.home');
+    public function home(){
+    	$products = Product::latest()->simplePaginate(6);
+		return view('main.home',['products' => $products]);
     }
 }

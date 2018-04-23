@@ -1,68 +1,148 @@
-
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
 // Variables
 @import "variables";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+.navbar {
+    margin-bottom:0px;
+}
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-.big-padding {
-    padding:30px;
-}
 .no-margin {
-    margin:0px;
+    margin: 0px;
 }
+
 .no-padding {
-    padding:0px;
+    padding: 0px;
 }
+
+.big-padding {
+    padding: 30px;
+}
+
+.large-padding{
+    padding: 10px 15px;
+}
+
 .no-transform {
     text-transform: none;
 }
+
 .blue-grey {
-    background-color:#37474f;
+    background-color: #37474f;
 }
-.white {
-    background-color:white;
-}
+
 .white-text {
     color:white;
 }
-.red-text {
-    color:rgb(200,50,50);
-}
-.inline-block {
-    display:inline-block;
-}
+
 .table {
-    background-color:white;
+    background-color: white;
 }
+
 .absolute {
-    position:absolute;
+    position: absolute;
 }
-.floating {
+
+.white {
+    background-color: white;
+}
+
+.white-text {
+    color:white;
+}
+
+.floating{
     position:fixed;
-    bottom:2em;
-    right:2em;
-    z-index:100;
+    bottom: 2em;
+    right: 2em;
+    z-index: 100;
 }
+
 .product {
-    width:500px;
-    max-width:100%;
-    padding:1em;
-    position:relative;
+    width: 600px;
+    max-width: 100%;
+    padding: 1em;
+    position: relative;
+
     h1 {
-        padding-bottom:10px;
-        border-bottom:solid 10x;
+        padding-bottom: 10px;
+        border-bottom: solid 1px;
     }
+
     .actions {
-    right: 1em;
-    top:10px;
+        right: 1em;
+        top: 10px;
     }
 }
+
+.red-text {
+    color: rgb(200,50,50);
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.top-space {
+    margin-top: 1em;
+}
+
+
+.created {
+    color: green;
+}
+
+.sale-data {
+    padding: 1em;
+    text-align:center;
+    border-right: solid 1px #222;
+    span {
+        display:block;
+        font-size: 2.2em;
+        color: #3f51b5;
+    }
+}
+
+.product-avatar {
+    max-width: 100%;
+}
+
+.products-container {
+    .product{
+        margin-top: 1em;
+    }
+}
+
+.circle-shopping-cart{
+    background-color: #232980;
+    border-radius: 50%;
+    padding: 1em 1em;
+}
+
+.highlight {
+    -webkit-animation: highlight 1.5s;
+    animation: highlight 1.5s;
+}
+
+@webkit-keyframes highlights {
+    50% {
+        background-color: #ffff00;
+        color:black;
+    }
+
+    100% {
+        background-color: inherit
+    }
+}
+
+@keyframes highlight {
+
+    50% {
+        background-color: #ffff00;
+        color:black;
+    }
+
+    100% {
+        background-color:inherit;
+    }
+}
+
 
