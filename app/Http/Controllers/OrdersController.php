@@ -2,24 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Order;
+//use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $orders = Order::latest()->get();
         $totalMonth = Order::totalMonth();
         $totalMonthCount = Order::totalMonthCount();
-        return view('orders.index',['orders' => $orders,
-                'totalMonth' => $totalMonth,
-                'totalMonthCount' => $totalMonthCount]);
+        return view('orders.index', ['orders'=>$orders, "totalMonth"=> $totalMonth, "totalMonthCount"=> $totalMonthCount]);
     }
 
 
@@ -31,5 +30,4 @@ class OrdersController extends Controller
         $order->save();
         return $order->$field;
     }
-
 }

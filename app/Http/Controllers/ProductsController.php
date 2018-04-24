@@ -2,28 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Product;
-use Auth;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth", ["except"=>'show']);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct(){
-        $this->middleware('auth',['except' => 'show']);
-    }
-
     public function index()
     {
         $products = Product::all();
-        return view('products.index',[
-            'products' => $products
-        ]);
+        return view("products.index", ["products" => $products]);
     }
 
     /**
@@ -33,8 +31,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $product = new Product();
-        return view('products.create',['product' => $product]);
+        $product = new Product;
+        return view('products.create', ['product' => $product]);
     }
 
     /**
@@ -45,11 +43,8 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        // image
+        $hasFile = $request->hasFile('cover') && $request->cover->isValid();//boolean
 
-        $hasFile = $request->hasFile('cover') && $request->cover->isValid(); // true if is uploaded
-
-        // two ways
         $product = new Product;
         $product->title = $request->title;
         $product->description = $request->description;
@@ -62,7 +57,7 @@ class ProductsController extends Controller
         }
 
         if($product->save()){
-            
+
             if($hasFile){
                 $request->cover->storeAs('images', "$product->id.$extension");
             }
@@ -81,8 +76,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('products.show',['product' => $product]);
+        $product = Product::findOrFail($id);
+        return view('products.show', ['product'=>$product]);
     }
 
     /**
@@ -93,8 +88,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        return view('products.edit',['product' => $product]);
+        $product = Product::findOrFail($id);
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
@@ -106,15 +101,15 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $product->title = $request->title;
         $product->description = $request->description;
         $product->pricing = $request->pricing;
 
-        if($product->save()){
+        if($product->save()) {
             return redirect('/products');
         } else {
-            return view('products.edit',['product' => $product]);
+            return view('products.edit', ['product' => $product]);
         }
     }
 
